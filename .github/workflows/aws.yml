@@ -12,4 +12,3 @@ jobs:
     - name: Install dependencies
       run: |
         make install-aws
-    

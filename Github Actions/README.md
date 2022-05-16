@@ -1,6 +1,7 @@
 [![Python application test with Github Actions](https://github.com/ThinamXx/Github-Actions/actions/workflows/main.yml/badge.svg)](https://github.com/ThinamXx/Github-Actions/actions/workflows/main.yml)
 
 # **Github Actions**
+- This is a repo for building out Github Actions and Tricks. 
 
 ### Steps to use the project:
 

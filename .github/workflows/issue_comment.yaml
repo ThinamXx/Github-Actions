@@ -11,15 +11,20 @@ jobs:
       - name: "dump github context"
         run: echo '${{ toJSON(github.event) }}' | jq
         shell: bash
-      - name: Create comment
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          issue-number: ${{ github.event }}
-          body: |
-            This is a multi-line test comment
-            - With GitHub **Markdown** :sparkles:
-            - Created by [create-or-update-comment][1]
-
-            [1]: https://github.com/peter-evans/create-or-update-comment
-          reactions: '+1'
+  
+  comment-with-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create comment with API
+        run: | 
+          gh api -X POST \
+            http://api.github.com/repo/${ORGANIZATION}/${REPOSITORY}/issues/${ISSUE_NUMBER/comments \
+            -f body='
+            Comment but from the API call not action
+            '
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            ORGANIZATION: ${{ github.event.organisation.login }}
+            REPOSITORY: ${{ github.event.repository.name }}
+            ISSUE_NUMBER: ${{ github.event.issue.number }}
   
